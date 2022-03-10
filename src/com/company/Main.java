@@ -1,11 +1,8 @@
 package com.company;
 
-import com.company.model.Datasource;
+import com.company.model.*;
 
 import java.sql.SQLException;
-import com.company.model.Artist;
-import com.company.model.Song;
-import com.company.model.Album;
 
 import javax.xml.crypto.Data;
 import java.sql.Connection;
@@ -51,6 +48,40 @@ public class Main {
         for(Album album: albums){
             System.out.println("ID = " + album.getId() + ", Name = " + album.getName() + ", Arist ID = " + album.getArtistId());
         }*/
+
+        /*ArrayList<String> albumsForArtist = datasource.queryAlbumsForArtist("Pink Floyd", Datasource.ORDER_BY_ASC);
+
+        for(String album: albumsForArtist){
+            System.out.println(album);
+        }*/
+
+        /*ArrayList<SongArtist> songArtists = datasource.queryArtistsForSong("Heartless", Datasource.ORDER_BY_ASC);
+        if(songArtists == null){
+            System.out.println("Couldn't find the artist for the song");
+            return;
+        }
+
+        for(SongArtist artist: songArtists){
+            System.out.println("Artist name = " + artist.getArtistName() + " Album name = " + artist.getAlbumName() +
+                    " Track = " + artist.getTrack());
+        }*/
+
+        //datasource.querySongsMetadata();
+        /*int count = datasource.getCount(Datasource.TABLE_SONGS);
+        System.out.println("Number of songs: "  + count);*/
+
+        //datasource.createViewForSongArtists();
+        ArrayList<SongArtist> songArtists;
+        songArtists = datasource.querySongInfoView("Go Your Own Way");
+        if(songArtists.isEmpty()){
+            System.out.println("Couldn't find the artist for this song.");
+            return;
+        }
+
+        for(SongArtist artist: songArtists){
+            System.out.println("From View - Arist name = " + artist.getArtistName() + " Album name = " +
+                    artist.getAlbumName() + " Track number = " + artist.getTrack());
+        }
 
         datasource.close();
     }
