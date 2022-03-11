@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -71,8 +72,15 @@ public class Main {
         System.out.println("Number of songs: "  + count);*/
 
         //datasource.createViewForSongArtists();
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a song title: ");
+        String title = scanner.nextLine();
+
         ArrayList<SongArtist> songArtists;
-        songArtists = datasource.querySongInfoView("Go Your Own Way");
+
+        songArtists = datasource.querySongInfoView(title);
         if(songArtists.isEmpty()){
             System.out.println("Couldn't find the artist for this song.");
             return;
