@@ -74,7 +74,7 @@ public class Main {
         //datasource.createViewForSongArtists();
 
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a song title: ");
         String title = scanner.nextLine();
 
@@ -89,7 +89,9 @@ public class Main {
         for(SongArtist artist: songArtists){
             System.out.println("From View - Arist name = " + artist.getArtistName() + " Album name = " +
                     artist.getAlbumName() + " Track number = " + artist.getTrack());
-        }
+        }*/
+
+        datasource.insertSong("Bad Romance", "Lady Gaga", "The Fame Monster", 1);
 
         datasource.close();
     }
